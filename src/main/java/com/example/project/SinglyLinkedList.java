@@ -105,7 +105,28 @@ public class SinglyLinkedList<T> {
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
     public void insertNth(T data, int position) {
-
+	Node<T> temporal = first;
+    	
+    	//Si la posicion es el inicio de la lista, se ejecuta el metodo addFirst()
+    	if(position == 0) {
+    		addFirst(data);
+    	} 
+    	//Si el dato a insertar es en la posicion ubicada despues del final de la lista se ejecuta el metodo addLast()
+    	else if(position == size) {
+    		addLast(data);
+	    } 
+    	//Si el dato a insertar es mayor a 0 y no es despues del ultimo de la lista, se realiza un bucle
+    	else if (position > 0 && position != size){
+    		//El bucle recorrera hasta la posicion - 1, para que se detenga un nodo antes del nodo a insertar
+	    	for(int i = 0; i < position - 1 ; i++){
+			//El nodo temporal se actualizara con su siguiente nodo mientras el bucle siga ejecutandose
+			temporal = temporal.getNext();
+	    	}
+	    	//El nuevo nodo apuntará al nodo temporal siguiente.
+	    	Node<T> nuevo = new Node(data,temporal.getNext());
+	    	//El nodo temporal que esta detras del nuevo, apuntara al nuevo nodo
+	    	temporal.setNext(nuevo);
+	    }
     }
 
     // Elimina el nodo de una posicion especifica de la lista
