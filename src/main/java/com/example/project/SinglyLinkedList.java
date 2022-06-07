@@ -136,7 +136,7 @@ public class SinglyLinkedList<T> {
 
         // testExercicio1();
         // testExercicio2();
-        testExercicio3();       
+        // testExercicio3();       
 
     }
 
