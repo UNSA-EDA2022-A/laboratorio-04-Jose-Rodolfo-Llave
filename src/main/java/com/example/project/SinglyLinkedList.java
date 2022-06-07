@@ -131,6 +131,8 @@ public class SinglyLinkedList<T> {
 	    	Node<T> nuevo = new Node(data,temporal.getNext());
 	    	//El nodo temporal que esta detras del nuevo, apuntara al nuevo nodo
 	    	temporal.setNext(nuevo);
+		
+		size++;
 	}
     }
 
@@ -155,6 +157,8 @@ public class SinglyLinkedList<T> {
 	    	}
 	    	//Se enlaza el nodo anterior al nodo que se eliminara, con el nodo posterior al nodo que se esta eliminando
 	      	temporal.setNext(temporal.getNext().getNext());
+		
+		size--;
 	    }
     }
 
