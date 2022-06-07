@@ -119,7 +119,7 @@ public class SinglyLinkedList<T> {
     	//Si el dato a insertar es en la posicion ubicada despues del final de la lista se ejecuta el metodo addLast()
     	else if(position == size) {
     		addLast(data);
-	    } 
+	} 
     	//Si el dato a insertar es mayor a 0 y no es despues del ultimo de la lista, se realiza un bucle
     	else if (position > 0 && position != size){
     		//El bucle recorrera hasta la posicion - 1, para que se detenga un nodo antes del nodo a insertar
@@ -131,7 +131,7 @@ public class SinglyLinkedList<T> {
 	    	Node<T> nuevo = new Node(data,temporal.getNext());
 	    	//El nodo temporal que esta detras del nuevo, apuntara al nuevo nodo
 	    	temporal.setNext(nuevo);
-	    }
+	}
     }
 
     // Elimina el nodo de una posicion especifica de la lista
