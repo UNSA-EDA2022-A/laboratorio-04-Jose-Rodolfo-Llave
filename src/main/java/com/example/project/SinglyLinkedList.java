@@ -128,7 +128,7 @@ public class SinglyLinkedList<T> {
 			temporal = temporal.getNext();
 	    	}
 	    	//El nuevo nodo apuntara al nodo temporal siguiente.
-	    	Node<T> nuevo = new Node(data,temporal.getNext());
+	    	Node<T> nuevo = new Node<T>(data,temporal.getNext());
 	    	//El nodo temporal que esta detras del nuevo, apuntara al nuevo nodo
 	    	temporal.setNext(nuevo);
 		
