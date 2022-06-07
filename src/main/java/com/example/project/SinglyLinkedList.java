@@ -106,7 +106,9 @@ public class SinglyLinkedList<T> {
     // Inserta un nuevo nodo en una posicion especifica de la lista
     public void insertNth(T data, int position) {
 	Node<T> temporal = first;
-    	if (position > size){
+    	
+	//Si la posicion no es valida retornara los valores de la lista
+	if (position > size){
 		System.out.println(toString());
 	}
 	    
