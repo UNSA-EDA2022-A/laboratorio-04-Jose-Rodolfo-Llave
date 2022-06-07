@@ -142,7 +142,7 @@ public class SinglyLinkedList<T> {
     	if(position >= size) {
     		System.out.println(toString());
     	} 
-    	//Si la posicion a eliminar es la primera llamara al método que elimina al primero de la lista
+    	//Si la posicion a eliminar es la primera llamara al metodo que elimina al primero de la lista
     	else if(position == 0) {
 	    	removeFirst();
 	    } 
