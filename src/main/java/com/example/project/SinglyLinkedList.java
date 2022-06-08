@@ -103,7 +103,7 @@ public class SinglyLinkedList<T> {
 	//Lista principal que servira para comparar, esta lista recorrera al finalizar cada pasada
     	Node <T> principal = first;
     	
-    	//Misma lista pero auxiliar que recorrerá mientras se compara
+    	//Misma lista pero auxiliar que recorrera mientras se compara
     	for(int i = 0; i < size; i++) {
     		//Si el nodo es nulo el bucle se detiene.
     		if(principal == null) {
