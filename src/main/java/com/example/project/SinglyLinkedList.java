@@ -100,7 +100,30 @@ public class SinglyLinkedList<T> {
 
     // Elimina aquellos nodos de la lista que esten duplicados
     public void deleteDuplicates() {
-
+	//Lista principal que servira para comparar, esta lista recorrera al finalizar cada pasada
+    	Node <T> principal = first;
+    	
+    	//Misma lista pero auxiliar que recorrerá mientras se compara
+    	for(int i = 0; i < size; i++) {
+    		//Si el nodo es nulo el bucle se detiene.
+    		if(principal == null) {
+    			break;
+    		} else {
+        		int j = 0;
+        		//El comparador se reiniciara desde la cabeza cuando acabe cada pasado del ciclo while
+            	Node <T> comparador = first;
+        		while(comparador != null) {
+        			if(j != i) {
+        				if(principal.getValue().compareTo(comparador.getValue()) == 0){
+        					deleteNth(j);
+        				}
+        			}
+        			comparador = comparador.getNext();
+        			j++;
+        		}
+    		}
+    		principal = principal.getNext();
+    	}
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
