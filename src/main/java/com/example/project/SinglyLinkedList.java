@@ -106,14 +106,10 @@ public class SinglyLinkedList<T> {
     // Inserta un nuevo nodo en una posicion especifica de la lista
     public void insertNth(T data, int position) {
 	Node<T> temporal = first;
-    	
-	//Si la posicion esta fuera del rango retorna los datos de la lista
-    	if(position >= size) {
-    		return;
-    	} 
-	//Si la posicion no es valida retornara los valores de la lista
-	else if (position > size){
-		System.out.println(toString());
+	
+	//Si la posicion no es valida no se hace nada
+	if (position > size){
+		return;
 	}
 	    
 	//Si la posicion es el inicio de la lista, se ejecuta el metodo addFirst()
@@ -144,8 +140,12 @@ public class SinglyLinkedList<T> {
     public void deleteNth(int position) {
         Node<T> temporal = first;
     	
+	//Si la posicion esta fuera del rango no se hace nada
+    	if(position >= size) {
+    		return;
+    	} 
     	//Si la posicion a eliminar es la primera llamara al metodo que elimina al primero de la lista
-    	if(position == 0) {
+    	else if(position == 0) {
 	    	removeFirst();
 	} 
     	//Si la posicion a eliminar es mayor a 0, se buscara el nodo a eliminar
