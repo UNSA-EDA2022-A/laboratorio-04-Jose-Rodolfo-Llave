@@ -140,14 +140,10 @@ public class SinglyLinkedList<T> {
     public void deleteNth(int position) {
         Node<T> temporal = first;
     	
-    	//Si la posicion esta fuera del rango retorna los datos de la lista
-    	if(position >= size) {
-    		System.out.println(toString());
-    	} 
     	//Si la posicion a eliminar es la primera llamara al metodo que elimina al primero de la lista
-    	else if(position == 0) {
+    	if(position == 0) {
 	    	removeFirst();
-	    } 
+	} 
     	//Si la posicion a eliminar es mayor a 0, se buscara el nodo a eliminar
     	else if (position > 0){
     		//El bucle recorrera hasta la posicion - 1, para que se detenga un nodo antes del nodo a eliminarse
