@@ -1,6 +1,6 @@
 package com.example.project;
 
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T extends Comparable<T>> {
     private Node<T> first; // Primero nodo de la lista
     private int size; // Tamano de la lista
 
@@ -100,24 +100,96 @@ public class SinglyLinkedList<T> {
 
     // Elimina aquellos nodos de la lista que esten duplicados
     public void deleteDuplicates() {
-
+	//Lista principal que servira para comparar, esta lista recorrera al finalizar cada pasada
+    	Node <T> principal = first;
+    	
+    	//Misma lista pero auxiliar que recorrera mientras se compara
+    	for(int i = 0; i < size; i++) {
+    		//Si el nodo es nulo el bucle se detiene.
+    		if(principal == null) {
+    			break;
+    		} else {
+        		int j = 0;
+        		//El comparador se reiniciara desde la cabeza cuando acabe cada pasado del ciclo while
+            	Node <T> comparador = first;
+        		while(comparador != null) {
+        			if(j != i) {
+        				if(principal.getValue().compareTo(comparador.getValue()) == 0){
+        					deleteNth(j);
+        				}
+        			}
+        			comparador = comparador.getNext();
+        			j++;
+        		}
+    		}
+    		principal = principal.getNext();
+    	}
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
     public void insertNth(T data, int position) {
-
+	Node<T> temporal = first;
+	
+	//Si la posicion no es valida no se hace nada
+	if (position > size){
+		return;
+	}
+	    
+	//Si la posicion es el inicio de la lista, se ejecuta el metodo addFirst()
+    	else if(position == 0) {
+    		addFirst(data);
+    	} 
+    	//Si el dato a insertar es en la posicion ubicada despues del final de la lista se ejecuta el metodo addLast()
+    	else if(position == size) {
+    		addLast(data);
+	} 
+    	//Si el dato a insertar es mayor a 0 y no es despues del ultimo de la lista, se realiza un bucle
+    	else if (position > 0 && position != size){
+    		//El bucle recorrera hasta la posicion - 1, para que se detenga un nodo antes del nodo a insertar
+	    	for(int i = 0; i < position - 1 ; i++){
+			//El nodo temporal se actualizara con su siguiente nodo mientras el bucle siga ejecutandose
+			temporal = temporal.getNext();
+	    	}
+	    	//El nuevo nodo apuntara al nodo temporal siguiente.
+	    	Node<T> nuevo = new Node<T>(data,temporal.getNext());
+	    	//El nodo temporal que esta detras del nuevo, apuntara al nuevo nodo
+	    	temporal.setNext(nuevo);
+		
+		size++;
+	}
     }
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-
+        Node<T> temporal = first;
+    	
+	//Si la posicion esta fuera del rango no se hace nada
+    	if(position >= size) {
+    		return;
+    	} 
+    	//Si la posicion a eliminar es la primera llamara al metodo que elimina al primero de la lista
+    	else if(position == 0) {
+	    	removeFirst();
+	} 
+    	//Si la posicion a eliminar es mayor a 0, se buscara el nodo a eliminar
+    	else if (position > 0){
+    		//El bucle recorrera hasta la posicion - 1, para que se detenga un nodo antes del nodo a eliminarse
+	    	for(int i = 0; i < position - 1 ; i++){
+	    		//El nodo temporal se actualizara con su siguiente nodo mientras el bucle siga ejecutandose
+	    		temporal = temporal.getNext();
+	    	}
+	    	//Se enlaza el nodo anterior al nodo que se eliminara, con el nodo posterior al nodo que se esta eliminando
+	      	temporal.setNext(temporal.getNext().getNext());
+		
+		size--;
+	    }
     }
 
     public static void main(final String[] args) {
 
         // testExercicio1();
         // testExercicio2();
-        testExercicio3();       
+        // testExercicio3();       
 
     }
 
