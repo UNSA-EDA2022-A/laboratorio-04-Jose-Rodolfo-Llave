@@ -107,8 +107,12 @@ public class SinglyLinkedList<T> {
     public void insertNth(T data, int position) {
 	Node<T> temporal = first;
     	
+	//Si la posicion esta fuera del rango retorna los datos de la lista
+    	if(position >= size) {
+    		return;
+    	} 
 	//Si la posicion no es valida retornara los valores de la lista
-	if (position > size){
+	else if (position > size){
 		System.out.println(toString());
 	}
 	    
